@@ -20,7 +20,6 @@ namespace DemoDemo.Core
 			return apiPlayers.Select ((p) => {
 				return new  Core.Player (p);
 			});
-
 		}
 	}
 }

@@ -12,7 +12,8 @@ namespace DemoDemo.Core
 			Name = player.Name;
 			Rank = player.Rank;
 			AvatarUrl = player.AvatarUrl;
-			// fetch and set Avatar
+
+			// TODO: fetch and set Avatar
 //			Avatar=player.
 		}
 	}
