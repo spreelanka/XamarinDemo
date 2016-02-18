@@ -1,5 +1,11 @@
 ﻿using System;
 using Splat;
+using System.Drawing;
+using Autofac;
+using System.Net;
+using System.IO;
+using System.Threading.Tasks;
+
 
 namespace DemoDemo.Core
 {
@@ -12,9 +18,6 @@ namespace DemoDemo.Core
 			Name = player.Name;
 			Rank = player.Rank;
 			AvatarUrl = player.AvatarUrl;
-
-			// TODO: fetch and set Avatar
-//			Avatar=player.
 		}
 	}
 }

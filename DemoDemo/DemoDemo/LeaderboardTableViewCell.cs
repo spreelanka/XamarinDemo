@@ -3,6 +3,8 @@ using Foundation;
 using UIKit;
 using DemoDemo.Core;
 using Splat;
+using Autofac;
+using System.Threading.Tasks;
 
 namespace DemoDemo.iOS
 {
@@ -23,17 +25,24 @@ namespace DemoDemo.iOS
 		public LeaderboardTableViewCell () : base ()
 		{
 		}
-
+		// TODO
 		public void Setup (Player player)
 		{
 			PlayerNameLabel.Text = player.Name;
 			RankLabel.Text = player.Rank.ToString ();
-			if (player.Avatar != null) {
-				AvatarImageView.Image = player.Avatar.ToNative ();
-			} else {
+			if (player.Avatar == null) {
 				AvatarImageView.Image = null;
-			}
-				
+				var bitmapLoader = Core.IoC.Container.Resolve<IBitmapLoader> ();
+				var downloadService = Core.IoC.Container.Resolve<IImageDataService> ();
+				var data = downloadService.DownloadData (player.AvatarUrl);
+
+				var image = new UIImage (NSData.FromArray (data));
+				player.Avatar = image.FromNative ();
+				AvatarImageView.Image = image;
+			} else {
+				AvatarImageView.Image = player.Avatar.ToNative ();
+			} 
+		
 		}
 	}
 }

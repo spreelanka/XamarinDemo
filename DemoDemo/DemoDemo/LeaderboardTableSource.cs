@@ -29,6 +29,7 @@ namespace DemoDemo.iOS
 			return Players.Count;
 		}
 
+		// TODO
 		public override UITableViewCell GetCell (UITableView tableView, Foundation.NSIndexPath indexPath)
 		{
 			var player = Players [indexPath.Row];
@@ -38,6 +39,11 @@ namespace DemoDemo.iOS
 			}
 			cell.Setup (player);
 			return cell;
+		}
+
+		public override nfloat GetHeightForRow (UITableView tableView, Foundation.NSIndexPath indexPath)
+		{
+			return 200f;
 		}
 	}
 }
